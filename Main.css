@@ -49,6 +49,47 @@
     background-image: url(https://i.imgur.com/PDEQQ4w.png);
 }
 
+/*This is the icon's flash when its actually showing the danger*/
+}
+#ui-map-info.js-map-hidden.js-ui-hud-show-icon-pulse {
+  background: #f000;
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 2s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+  
+@keyframes pulse {
+  0% {
+    background-color: rgb(111, 6, 6);
+  }
+
+  50% {
+    background-color: rgb(238, 6, 6);
+  }
+
+  100% {
+    background-color: rgb(255, 0, 0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background-color: rgba(87, 0, 0, .8);
+  }
+
+  50% {
+    background-color: rgba(210, 3, 3, .8);
+  }
+
+  100% {
+    background-color: rgba(255, 0, 0, .8);
+  }
+}    
 /*======================================================================================================================START==MEDICAL==ITEMS==EDIT==CHAOS======================================================================================================================*/
 /*Start Soda*/
 #ui-loot-soda {
@@ -995,7 +1036,7 @@
   }
 }
 
-@keyframes pulse {
+@keyframes pulsewhite {
   0%, 50%, 100% {
     background-color: #b07ef7;
   }
