@@ -1,0 +1,779 @@
+@-moz-document url-prefix("https://survev.io/") {
+/* ---------- BACKGROUND ----------> */
+#background {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/7/71/Black.png) !important;
+}
+
+#start-row-header {
+    background-image: url(https://i.imgur.com/I4uYvnX.png) !important;
+}
+
+#start-top-left,
+#start-bottom-left,
+#start-bottom-middle {
+    visibility: visible !important;
+}
+
+/* ---------- SCALE ADJUSTMENTS ----------> */
+@media (max-height: 720px) {
+    #start-bottom-right {
+        transform: scale(.8);
+        transform-origin: bottom right;
+    }
+}
+
+/* ---------- KILL LEADER ----------> */
+#ui-kill-leader-icon {
+    background-color: rgba(0, 0, 0, 0.4);
+    background-image: url(https://i.imgur.com/1PmSqQx.png);
+}
+
+#ui-kill-leader-wrapper {
+    color: #ffe741;
+    position: absolute;
+    right: 112px;
+    top: 0;
+}
+
+/* ---------- MAP INFO ----------> */
+#ui-map-info {
+    color: #67e84c;
+}
+
+.gas-icon {
+    background-image: url(https://i.imgur.com/NNGPVcu.png);
+}
+
+.danger-icon {
+    background-image: url(https://i.imgur.com/PDEQQ4w.png);
+}
+
+#ui-map-info.js-map-hidden.js-ui-hud-show-icon-pulse {
+    background: #f000;
+    animation: pulse 1s ease-out 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { background-color: rgba(87, 0, 0, 0.8); }
+    50% { background-color: rgba(210, 3, 3, 0.8); }
+    100% { background-color: rgba(255, 0, 0, 0.8); }
+}
+
+/* ---------- MEDICAL ITEMS ----------> */
+#ui-loot-soda,
+#ui-loot-painkiller,
+#ui-loot-bandage,
+#ui-loot-healthkit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    vertical-align: middle;
+}
+
+#ui-loot-soda {
+    display: inline-grid;
+    grid-template-columns: auto 45px;
+    gap: 13px;
+}
+
+#ui-loot-soda img.ui-loot-image,
+#ui-loot-painkiller img.ui-loot-image,
+#ui-loot-bandage img.ui-loot-image,
+#ui-loot-healthkit img.ui-loot-image {
+    opacity: 0;
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+
+#ui-loot-soda::after {
+    content: "";
+    width: 32px;
+    height: 32px;
+    background-image: url("https://i.imgur.com/sMXhpzq.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    grid-column: 2;
+    justify-self: center;
+    align-self: center;
+}
+
+#ui-loot-soda.image-left::after { grid-column: 1; }
+
+#ui-loot-painkiller::after {
+    content: "";
+    width: 128px;
+    height: 128px;
+    background-image: url("https://i.imgur.com/yp00TxA.png");
+    background-repeat: no-repeat;
+    background-position: 65px;
+    background-size: contain;
+    margin-top: 1px;
+}
+
+#ui-loot-bandage::after {
+    content: "";
+    width: 128px;
+    height: 128px;
+    background-image: url("https://i.imgur.com/CWfrGMt.jpeg");
+    background-repeat: no-repeat;
+    background-position: 70px;
+    background-size: contain;
+    margin-top: 1px;
+}
+
+#ui-loot-healthkit::after {
+    content: "";
+    width: 128px;
+    height: 128px;
+    background-image: url("https://i.imgur.com/THdsXrq.png");
+    background-repeat: no-repeat;
+    background-position: 70px;
+    background-size: contain;
+    margin-top: 1px;
+}
+
+/* ---------- MENU EDITING ----------> */
+.menu-option {
+    border-radius: 0 !important;
+    border-color: rgba(255, 255, 255, 0) !important;
+}
+
+.menu-block { max-height: 290px; }
+
+.btn-green,
+.btn-team-option,
+.account-details-button-wrapper,
+#btn-pass-locked,
+#btn-customize {
+    border-bottom: 0 !important;
+    background: #1E1D1D !important;
+    color: #fff !important;
+    box-shadow: inset 0 -2px rgba(0, 0, 0, 0) !important;
+}
+
+#btn-customize {
+    background-image: url(https://survev.io/img/emotes/surviv.svg) !important;
+    background-position: 8px 5px !important;
+    background-repeat: no-repeat !important;
+    background-size: 28px !important;
+    color: #1E1D1D !important;
+    box-shadow: inset 0 -2px rgba(0, 0, 0, 0.4);
+}
+
+.btn-start-option {
+    vertical-align: bottom;
+    margin-right: 8px;
+    margin-bottom: 0;
+    width: 48px;
+    height: 42px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-color: #1E1D1D;
+    box-shadow: inset 0 -4px rgba(0, 0, 0, 0.24);
+}
+
+.btn-account-turq {
+    background-color: #1E1D1D;
+    border-bottom: 2px solid transparent;
+    box-shadow: inset 0 -2px transparent;
+    text-shadow: none;
+}
+
+.btn-account-grey {
+    background-color: #ea0000;
+    border-bottom: 2px solid #ea0000;
+    box-shadow: inset 0 -2px #f00;
+    margin-top: 24px;
+    text-shadow: none;
+}
+
+.btn-account-disabled {
+    cursor: default;
+    filter: brightness(60%) !important;
+}
+
+.account-details-user { cursor: pointer; display: flex; }
+
+#btn-help {
+    border-bottom: 0 !important;
+    font-size: 0px;
+    height: 0px;
+}
+
+/* ---------- LOADOUT EDITING ----------> */
+#modal-customize-body {
+    background-color: #1E1D1D;
+    color: #000;
+    height: auto;
+}
+
+#modal-customize-header,
+#modal-customize-footer {
+    background-color: #1E1D1D;
+    color: #fff;
+}
+
+#modal-customize-header { height: 122px; }
+#modal-customize-footer { height: 56px; }
+
+.modal-content-right {
+    background: #1E1D1D;
+    border: 6px solid transparent;
+    border-radius: 5px;
+    bottom: 0;
+    display: none;
+    pointer-events: initial;
+    position: fixed;
+    right: 0;
+    width: 330px;
+}
+
+/* ---------- KEYBIND EDITING ----------> */
+#ui-modal-keybind-body,
+#ui-modal-keybind-header,
+#ui-modal-keybind-footer {
+    background-color: #1E1D1D;
+}
+
+#ui-modal-keybind-body { color: #000; }
+#ui-modal-keybind-footer {
+    color: #fff;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ---------- IN-GAME MENU ----------> */
+.btn-game-menu {
+    text-align: center;
+    line-height: 38px;
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: 0;
+    border-radius: 5px;
+    box-sizing: border-box;
+    position: relative;
+    margin: 5px auto;
+    color: #fff;
+    font-size: 16px;
+    text-shadow: 0 1px 2px #000;
+    background-color: #1E1D1D;
+    border-bottom: 2px solid #1E1D1D;
+    box-shadow: inset 0 -2px #1E1D1D;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+/* ---------- DEATH MENU ----------> */
+.ui-stats-header-title {
+    font-weight: 700;
+    font-size: 48px;
+    margin: 10px;
+    color: red;
+}
+
+#ui-stats-logo {
+    background-image: url(https://i.imgur.com/I4uYvnX.png);
+    background-repeat: no-repeat;
+    background-size: 264px;
+    background-position: center;
+    height: 125px;
+    position: absolute;
+    left: 20px;
+    top: 8px;
+    width: 264px;
+}
+
+/* ---------- SPECTATE MENU ----------> */
+#ui-spectate-options {
+    position: relative;
+    color: #fff;
+    font-size: 16px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 -2px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    pointer-events: all;
+    width: 100%;
+}
+#ui-spectate-options-wrapper {
+    color: #fff;
+    cursor: default;
+    display: block;
+    left: 12px;
+    position: absolute;
+    top: 12px;
+}
+@media (max-height: 768px),
+(max-width: 1200px) {
+    #ui-spectate-options-wrapper {
+        transform: scale(.85);
+        transform-origin: top left;
+    }
+}
+#ui-spectate-buttons {
+    display: inline-block;
+    padding: 8px 8px 0;
+    text-align: center;
+    width: 192px;
+}
+#ui-spectate-options a {
+    position: relative;
+    color: #fff;
+    font-size: 16px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    background: #1E1D1D;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 -2px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+#btn-spectate-prev-player {
+    margin-bottom: 24px;
+}
+#ui-spectate-stats {
+    vertical-align: top;
+    display: none;
+}
+#ui-spectate-stats-header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 8px;
+}
+#ui-spectate-stats-table {
+    width: 100%;
+    background-color: transparent;
+    margin: auto 0 auto auto;
+    border-collapse: collapse;
+}
+#ui-spectate-stats tbody,
+#ui-spectate-stats td,
+#ui-spectate-stats th {
+    padding: 0 8px 8px 16px;
+    font-size: 18px;
+}
+.ui-spectate-stats-category {
+    width: 130px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.ui-spectate-stats-value {
+    width: 75px;
+    color: #fff;
+}
+/* ---------- TEAM RELATED ----------> */
+@media (max-width: 850px),
+       (max-width: 900px) and (min-resolution: 3dppx) {
+    .btn-team-option { border-bottom: none; }
+}
+
+#btn-team-leave {
+    background: #1E1D1D;
+    border-bottom: 2px solid #1E1D1D;
+    bottom: -32px;
+    box-shadow: inset 0 -2px #1E1D1D;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    right: 14px;
+    top: 20px;
+    transform: scale(1);
+    transform-origin: top right;
+    width: 140px;
+}
+
+#btn-team-mobile-link-leave {
+    background: #1E1D1D;
+    border-bottom: 2px solid rgba(62, 62, 62, 0);
+    bottom: 40px;
+    box-shadow: inset 0 -2px rgba(62, 62, 62, 0);
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    right: 5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+    width: 190px;
+}
+
+/* ---------- TOP LEFT HUD ----------> */
+#ui-top-left {
+    position: absolute;
+    color: #fff;
+    font-size: 16px;
+    top: 12px;
+    left: 12px;
+    display: block;
+}
+
+@media (max-height: 768px),
+       (max-width: 1200px) {
+    #ui-top-left {
+        transform-origin: top left;
+        transform: scale(.85);
+    }
+}
+
+#team-desc-text span#invite-link-text {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#team-desc-text span {
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* ---------- TEAM MENU MEMBER ICONS ----------> */
+.team-menu-member > .icon-leader {
+    background-image: url(https://i.imgur.com/1PmSqQx.png);
+}
+
+.team-menu-member > .icon-kick {
+    background-image: url(https://i.imgur.com/wu2LAeo.png);
+    background-position: 49%;
+    background-size: 65%;
+    opacity: 1;
+    cursor: pointer;
+}
+
+#team-code-text {
+    display: block;
+    font-size: 18px;
+    margin: 2px auto 0;
+    color: #FFF;
+    font-weight: 700;
+    width: 60%;
+}
+
+/* ---------- COPY ITEM ----------> */
+/*.copy-item {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    height: 32px;
+    width: 32px;
+    border: none;
+    background-color: transparent;
+    background-size: 32px;
+    background-image: url(https://png.pngtree.com/png-vector/20230728/ourmid/pngtree-lavender-clipart-the-lavender-flowers-are-a-bright-purple-illustration-cartoon-vector-png-image_6803654.png);
+    cursor: pointer;
+}
+*/
+.copy-toast {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 18px;
+    color: #504E53;
+}
+
+.ui-bg-standard {
+    background: rgba(0, 0, 0, 0.24);
+    border-radius: 5px;
+}
+
+.ui-team-member {
+    display: none;
+    position: relative;
+    width: 200px;
+    height: 32px;
+    padding: 4px;
+    margin-bottom: 8px;
+}
+
+.ui-team-member-name {
+    font-weight: 700;
+    text-shadow: 1px 1px 0 #000;
+    font-size: 16px;
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ui-team-member-color {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 7px;
+    width: 14px;
+    height: 14px;
+}
+
+/* ---------- IN-GAME LEADERBOARD COLORS ----------> */
+.ui-background-yellow { background-color: #ff0; }
+.ui-background-blue { background-color: #00f; }
+.ui-background-red { background-color: red; }
+.ui-background-purple { background-color: #f0f; }
+.ui-background-cyan { background-color: #0ff; }
+.ui-background-orange { background-color: #ff5400; }
+
+/* ---------- TEAM MEMBER STATUS ----------> */
+.ui-team-member-status {
+    display: none;
+    position: absolute;
+    top: 4px;
+    right: -38px;
+    width: 32px;
+    height: 32px;
+    background-size: 32px;
+    background-repeat: no-repeat;
+}
+
+.ui-team-member-status-downed,
+.ui-team-member-status-dead,
+.ui-team-member-status-disconnected {
+    display: block !important;
+}
+
+.ui-team-member-status-downed {
+    border-radius: 16px;
+    background-image: url(https://i.imgur.com/FOwNj6q.png) !important;
+}
+
+.ui-team-member-status-dead {
+    background-image: url(https://static.vecteezy.com/system/resources/thumbnails/013/666/483/small_2x/tombstone-in-the-cemetery-during-halloween-png.png) !important;
+    opacity: 0.5 !important;
+}
+
+.ui-team-member-status-disconnected {
+    background-image: url(https://png.pngtree.com/png-vector/20220623/ourmid/pngtree-wifi-network-disconnected-internet-connection-png-image_5172136.png) !important;
+    opacity: 0.5 !important;
+}
+
+/* ---------- TEAM MEMBER HEALTH ----------> */
+.ui-team-member-health {
+    margin-top: 4px;
+}
+
+.ui-team-member-health .ui-bar-inner {
+    background-color: #00ff10;
+    z-index: 1;
+    position: absolute;
+    border-radius: 4px;
+    width: 200px;
+    height: 10px;
+    transition: width 0s ease-out;
+}
+
+.ui-team-member-health .ui-bar-danger {
+    background: rgba(255, 0, 0, 0.8);
+    animation: pulse 0.5s ease-out infinite alternate;
+}
+
+.ui-team-member-health .ui-health-depleted {
+    z-index: 0;
+    background: #929292;
+    transition: width 1s ease-out;
+}
+
+/* ---------- AMMO EDITING ----------> */
+.ui-loot-overlay {
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/HD_transparent_picture.png/1024px-HD_transparent_picture.png") no-repeat center center !important;
+    background-size: cover !important;
+    transform: scale(1,1);
+}
+
+#ui-loot-12gauge,
+#ui-loot-762mm,
+#ui-loot-556mm,
+#ui-loot-9mm,
+#ui-loot-50AE,
+#ui-loot-45acp,
+#ui-loot-flare {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#ui-loot-12gauge img.ui-loot-image,
+#ui-loot-762mm img.ui-loot-image,
+#ui-loot-556mm img.ui-loot-image,
+#ui-loot-9mm img.ui-loot-image,
+#ui-loot-50AE img.ui-loot-image,
+#ui-loot-45acp img.ui-loot-image,
+#ui-loot-flare img.ui-loot-image {
+    display: none !important;
+}
+
+/* Individual Loot Items with proper transform & gap on parent */
+#ui-loot-12gauge { gap: 2px; transform: translateY(-45px); }
+#ui-loot-762mm   { gap: 1px; transform: translateY(-43px); }
+#ui-loot-556mm   { gap: 2px; transform: translateY(-42px); }
+#ui-loot-9mm     { gap: 2px; transform: translateY(-19px); }
+#ui-loot-50AE    { gap: 2px; transform: translateY(-20px); }
+#ui-loot-45acp   { gap: 2px; transform: translateY(-42px); }
+#ui-loot-flare   { gap: 2px; transform: translateY(-42px); }
+
+/* Actual Loot Images */
+#ui-loot-12gauge::after { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/FSeF6Pz.png") no-repeat center/contain; margin-top: 2px; }
+#ui-loot-762mm::after   { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/YEjKFeX.png") no-repeat center/contain; margin-top: 2px; }
+#ui-loot-556mm::after   { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/jRQjNgL.png") no-repeat center/contain; margin-top: 2px; }
+#ui-loot-9mm::after     { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/htcfw90.png") no-repeat center/contain; margin-top: 2px; }
+#ui-loot-50AE::after    { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/NWi1Sav.png") no-repeat center/contain; margin-top: 2px; }
+#ui-loot-45acp::after   { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/gG6iLrw.png") no-repeat center/contain; margin-top: 2px; }
+#ui-loot-flare::after   { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/8PUySaO.png") no-repeat center/contain; margin-top: 2px; }
+
+/* ---------- DEATH SCREEN ----------> */
+.ui-stats-info-player {             
+    position: relative;
+    width: 255px;
+    top: 10px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 4px;
+    border: 2px solid black;
+    transform: translateX(-50%);
+}
+
+.ui-stats-info-player-name {
+    color: #FFF;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*
+.ui-stats-info-status:after {
+    background-image: url(https://i.imgur.com/6kC75JH.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 200px;
+    content: "";
+    display: block;
+    height: 395%;
+    left: initial;
+    opacity: 1;
+    position: absolute;
+    top: -135%;
+    width: 100%;
+    z-index: -1;
+}
+
+/* ---------- ADREN EDITING ----------> */
+#ui-boost-counter .ui-boost-base {
+    background: rgba(255,255,255,0);
+    height: 5px;
+    margin-bottom: 5px;
+}
+
+#ui-boost-counter-0 .ui-bar-inner { background: #FFF; }
+#ui-boost-counter-1 .ui-bar-inner { background: #949297; }
+#ui-boost-counter-2 .ui-bar-inner { background: #474748; }
+#ui-boost-counter-3 .ui-bar-inner { background: #1F1F20; }
+
+.ui-boost-base .ui-bar-inner {
+    border-radius: inherit;
+    width: 20px;
+    height: 10px;
+}
+
+/* ---------- HEALTH EDITING ----------> */
+#ui-health-actual.ui-bar-inner {
+  background: rgba(30, 30, 30, .8);
+  animation-name: pulsewhite;
+  animation-duration: 100s;
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+.health-bar-pulse { animation: pulsewhite 1s linear infinite; }
+
+@keyframes pulsewhite {
+  0%, 50%, 100% { background-color: #353435; }
+}
+
+/* ---------- ALIVE COUNTER ----------> */
+#ui-leaderboard-wrapper {
+  position: absolute;
+  color: #505051;
+  font-size: 16px;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  font-weight: bold;
+  text-align: center;
+  width: 85px;
+}
+
+/* ---------- KILLFEED ----------> */
+#ui-killfeed-contents .killfeed-div {
+  position: absolute;
+  right: 100px;
+  background-color: rgba(0, 0, 0, .2);
+  padding: 4px 8px;
+  border-radius: 2px;
+  height: 22px;
+  line-height: 24px;
+}
+
+#ui-killfeed-0 .killfeed-text,
+#ui-killfeed-1 .killfeed-text,
+#ui-killfeed-2 .killfeed-text,
+#ui-killfeed-3 .killfeed-text,
+#ui-killfeed-4 .killfeed-text,
+#ui-killfeed-5 .killfeed-text {
+    background: linear-gradient(to right,#FFF 0%,#FFF 20%,#FFF 50%,#FFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+#ad-block-left, #social-share-block {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+#news-wrapper {
+  opacity: 0 !important;
+  transition: 0.3s !important;
+}
+#news-wrapper:hover {
+  opacity: 1 !important;
+}
+
+/* You killed someone (blue) */
+#ui-killfeed .killfeed-text[style*="rgb(0, 191, 255)"],
+#ui-killfeed .killfeed-text[style*="#00bfff"] {
+  color: transparent !important;
+  background: linear-gradient(to right, #00bfff, #00bfff, #00bfff) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold !important;
+}
+
+/* You got killed (red) */
+#ui-killfeed .killfeed-text[style*="rgb(209, 119, 124)"],
+#ui-killfeed .killfeed-text[style*="#d1777c"] {
+  color: transparent !important;
+  background: linear-gradient(to right, #E3222D, #E3222D, #E3222D) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold !important;
+}
+/*Changes changelog Posiston*/
+#start-bottom-middle{
+    bottom: 10020px;
+}
+}
