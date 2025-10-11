@@ -1,13 +1,176 @@
 @-moz-document url-prefix("https://survev.io/") {
 /* ---------- BACKGROUND ----------> */
 #background {
-    background-image: url(https://i.imgur.com/vsFizFZ.gif) !important;
+    background-image: url(https://m.media-amazon.com/images/I/81yrz+uGqpL.jpg) !important;
+}
+
+.menu-column.menu-block {
+  background: rgba(10,15,20,0.8) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,255,255,0.15) !important;
+  border-left: 3px solid #00f7ff !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 25px rgba(0,255,255,0.08), inset 0 0 10px rgba(0,255,255,0.05);
+  transition: 0.25s ease-in-out;
+}
+.menu-column.menu-block:hover {
+  box-shadow: 0 0 25px rgba(0,255,255,0.25);
+  transform: translateY(-1px);
+}
+
+#start-menu {
+  background: rgba(10, 15, 20, .82) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0,255,255,0.1) !important;
+  border-left: 3px solid #00f7ff !important;
+  border-radius: 6px;
+  padding: 28px 30px !important;
+  min-height: 340px !important;
+  box-shadow: 0 0 20px rgba(0,255,255,0.15);
+}
+
+#player-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.player-name-input {
+  background: rgba(0,255,255,0.05) !important;
+  border: 1px solid rgba(0,255,255,0.25) !important;
+  color: #00f7ff !important;
+  text-align: center;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 4px;
+  outline: none;
+  transition: 0.2s;
+}
+.player-name-input:focus {
+  box-shadow: 0 0 10px rgba(0,255,255,0.5);
+}
+
+#server-select-main {
+  background: rgba(0,255,255,0.05) !important;
+  border: 1px solid rgba(0,255,255,0.2) !important;
+  color: #00f7ff !important;
+  text-transform: uppercase;
+  font-size: 13px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.btn-green,
+.btn-darken,
+.btn-hollow {
+  background-color: rgba(0,255,255,0.08) !important;
+  border: 1px solid rgba(0,255,255,0.25) !important;
+  color: #00f7ff !important;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  transition: all 0.25s ease-in-out;
+  border-radius: 3px;
+}
+.btn-green:hover,
+.btn-darken:hover {
+  background-color: rgba(0,255,255,0.2) !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4);
+  transform: scale(1.03);
+}
+
+#btns-quick-start {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+#ad-block-left {
+  background: rgba(10,15,20,0.85) !important;
+  border: 1px solid rgba(0,255,255,0.15);
+  border-left: 3px solid #00f7ff;
+  box-shadow: 0 0 20px rgba(0,255,255,0.1);
+  backdrop-filter: blur(8px);
+}
+
+#news-block {
+  background: rgba(10,15,20,0.9) !important;
+  border-left: 3px solid #00f7ff !important;
+  box-shadow: inset 0 0 15px rgba(0,255,255,0.1);
+}
+#news-block h1,
+#news-block h2,
+#news-block h3 {
+  color: #00f7ff !important;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+#news-block p {
+  color: #cfe3e7 !important;
+  line-height: 1.6;
+}
+
+#pass-block,
+#pass-progress,
+#pass-quest-wrapper {
+  background: rgba(10,15,20,0.9) !important;
+  border: 1px solid rgba(0,255,255,0.15);
+  border-radius: 5px;
+  backdrop-filter: blur(10px);
+}
+#pass-progress-bar-fill {
+  background: linear-gradient(90deg,#00f7ff,#00b8b0) !important;
+  box-shadow: 0 0 10px rgba(0,255,255,0.5);
+}
+#pass-name-text {
+  color: #00f7ff !important;
+  text-shadow: 0 0 10px rgba(0,255,255,0.4);
+}
+
+#start-top-left,
+#start-top-right {
+  color: #00f7ff !important;
+  font-weight: 700;
+}
+
+@keyframes bfGlow {
+  0%,100% { box-shadow: 0 0 6px rgba(0,255,255,0.2); }
+  50% { box-shadow: 0 0 16px rgba(0,255,255,0.5); }
+}
+.menu-block:hover {
+  animation: bfGlow 2s ease-in-out infinite;
 }
 
 #start-row-header {
     background-image: url(https://i.imgur.com/I4uYvnX.png) !important;
 }
+    
+.btn-kofi {
+  display: none !important;
+}
 
+.surviv-shirts {
+  background-image: url("https://i.imgur.com/pOuG1fV.png") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+}
+
+.surviv-shirts a {
+  display: none !important;
+}
+
+.account-details-user .account-avatar {
+    background-image: url("https://yt3.googleusercontent.com/H6H4wfEryyWmbYHXKECfPsauv5Wup26HpUFrDjCnuq32waY43Xatq1DrCtJ0Vm7hX-LVDwGo=s900-c-k-c0x00ffffff-no-rj") !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+    
 #start-top-left,
 #featured-streamers, /* nostalgic reason */
 #start-bottom-left,
@@ -203,6 +366,45 @@
     border-bottom: 0 !important;
     font-size: 0px;
     height: 0px;
+}
+    
+#btns-quick-start {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 8px !important;
+  margin-top: 8px !important;
+}
+
+#btn-start-mode-0 {
+  display: block !important;
+  width: 100% !important;
+  margin-bottom: 10px !important;
+}
+
+#btn-start-mode-1,
+#btn-start-mode-2 {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.btns-double-row {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 8px !important;
+}
+
+.menu-option.btn-green,
+.menu-option.btn-darken {
+  min-height: 38px !important;
+  font-size: 14px !important;
+  padding: 6px 0 !important;
+}
+
+.menu-option:hover {
+  background-color: rgba(0,255,255,0.2) !important;
+  box-shadow: 0 0 12px rgba(0,255,255,0.4);
+  transform: scale(1.02);
+  transition: all 0.2s ease-in-out;
 }
 
 /* ---------- LOADOUT EDITING ----------> */
@@ -496,7 +698,7 @@
 
 .ui-team-member-name {
     font-weight: 700;
-    text-shadow: 1px 1px 0 #000;
+    text-shadow: 1px 1px 0 #00bfff;
     font-size: 16px;
     max-width: 180px;
     white-space: nowrap;
@@ -674,7 +876,7 @@
 #ui-boost-counter .ui-boost-base {
     background: rgba(255,255,255,0);
     height: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 #ui-boost-counter-0 .ui-bar-inner { background: #03565E; }
@@ -686,6 +888,7 @@
     border-radius: inherit;
     width: 20px;
     height: 10px;
+    border: 2px solid black;
 }
 
 /* ---------- HEALTH EDITING ----------> */
@@ -721,25 +924,95 @@
 }
 
 /* ---------- KILLFEED ----------> */
-#ui-killfeed-contents .killfeed-div {
-  position: absolute;
-  right: 100px;
-  background-color: rgba(0, 0, 0, .2);
-  padding: 4px 8px;
-  border-radius: 2px;
-  height: 22px;
-  line-height: 24px;
+
+
+/* You killed someone (blue) */
+#ui-killfeed .killfeed-text[style*="rgb(0, 191, 255)"],
+#ui-killfeed .killfeed-text[style*="#00bfff"] {
+  color: transparent !important;
+  background: linear-gradient(to right, #00bfff, #84eff9, #ffffff) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold !important;
 }
 
-#ui-killfeed-0 .killfeed-text,
-#ui-killfeed-1 .killfeed-text,
-#ui-killfeed-2 .killfeed-text,
-#ui-killfeed-3 .killfeed-text,
-#ui-killfeed-4 .killfeed-text,
-#ui-killfeed-5 .killfeed-text {
-    background: linear-gradient(to right,#03616a 0%,#06c8db 20%,#84eff9 50%,#C1FAFF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
+/* You got killed (red) */
+#ui-killfeed .killfeed-text[style*="rgb(209, 119, 124)"],
+#ui-killfeed .killfeed-text[style*="#d1777c"] {
+  color: transparent !important;
+  background: linear-gradient(to right, #d1777c, #ff8a8a, #ffffff) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold !important;
 }
+
+/* Neutral / faction mode — single-color gradients per line */
+
+/* 0 Orange gradient */
+#ui-killfeed-0 .killfeed-text {
+  color: transparent !important;
+  background: linear-gradient(to right, #6a4303, #db8c06, #f9c784, #ffe6c1) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold !important;
+}
+
+/* 1 Purple gradient */
+#ui-killfeed-1 .killfeed-text {
+  color: transparent !important;
+  background: linear-gradient(to right, #1d036a, #4206db, #8b84f9, #d7c1ff) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold !important;
+}
+
+/* 2 Green gradient */
+#ui-killfeed-2 .killfeed-text {
+  color: transparent !important;
+  background: linear-gradient(to right, #036a2b, #06db3a, #84f9a0, #c1ffd1) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold !important;
+}
+
+/* 3 Pink gradient */
+#ui-killfeed-3 .killfeed-text {
+  color: transparent !important;
+  background: linear-gradient(to right, #6a0321, #db064d, #f984a5, #ffc1d3) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold !important;
+}
+
+/* 4 Yellow gradient */
+#ui-killfeed-4 .killfeed-text {
+  color: transparent !important;
+  background: linear-gradient(to right, #6a6803, #d0db06, #f7f984, #fffec1) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold !important;
+}
+
+/* 5 Yellow gradient */
+#ui-killfeed-5 .killfeed-text {
+  color: transparent !important;
+  background: linear-gradient(to right, #6e0161, #c206db, #f984f3, #ffc1f7) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold !important;
+
+}
+
+.news-header {
+  display: block;
+  margin: 0;
+  font-size: 20px;
+  color: #41BAB1;
+}
+    
+.news-paragraph > .highlight {
+  font-weight: 700;
+  color: #0db0bf;
+}
+    
 }
