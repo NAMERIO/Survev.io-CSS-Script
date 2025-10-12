@@ -138,6 +138,17 @@
 }
 
 /* ---------- MENU EDITING ----------> */
+
+#server-select-main {
+  background: rgba(179, 0, 255, .05) !important;
+  border: 1px solid rgba(183, 0, 255, .2) !important;
+  color: #FFF !important;
+  text-transform: uppercase;
+  font-size: 13px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
 .menu-option {
     border-radius: 0 !important;
     border-color: rgba(255, 255, 255, 0) !important;
@@ -146,98 +157,159 @@
 .menu-block { max-height: 290px; }
 
 .btn-green,
-.btn-team-option,
-.account-details-button-wrapper,
-#btn-pass-locked,
-#btn-customize {
-    border-bottom: 0 !important;
-    background: #9d57ff !important;
-    color: #fff !important;
-    box-shadow: inset 0 -2px rgba(0, 0, 0, 0) !important;
+.btn-darken,
+.btn-hollow {
+  background-color: rgba(157, 0, 255, .08) !important;
+  border: 1px solid rgb(123, 0, 255) !important;
+  color: #FFF !important;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  transition: all 0.25s ease-in-out;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0);
 }
-
-#btn-customize {
-    background-image: url(https://survev.io/img/emotes/surviv.svg) !important;
-    background-position: 8px 5px !important;
-    background-repeat: no-repeat !important;
-    background-size: 28px !important;
-    color: #9d57ff !important;
-    box-shadow: inset 0 -2px rgba(0, 0, 0, 0.4);
+.btn-green:hover,
+.btn-darken:hover {
+  background-color: rgba(187, 0, 255, .2) !important;
+  box-shadow: 0 0 15px rgba(140, 0, 255, .4);
 }
-
-.btn-start-option {
-    vertical-align: bottom;
-    margin-right: 8px;
-    margin-bottom: 0;
-    width: 48px;
-    height: 42px;
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-color: #9d57ff;
-    box-shadow: inset 0 -4px rgba(0, 0, 0, 0.24);
-}
-
-.btn-account-turq {
-    background-color: #9d57ff;
-    border-bottom: 2px solid transparent;
-    box-shadow: inset 0 -2px transparent;
-    text-shadow: none;
-}
-
-.btn-account-grey {
-    background-color: #ea0000;
-    border-bottom: 2px solid #ea0000;
-    box-shadow: inset 0 -2px #f00;
-    margin-top: 24px;
-    text-shadow: none;
-}
-
-.btn-account-disabled {
-    cursor: default;
-    filter: brightness(60%) !important;
-}
-
-.account-details-user { cursor: pointer; display: flex; }
-
 #btn-help {
     border-bottom: 0 !important;
     font-size: 0px;
     height: 0px;
 }
 
+#news-block {
+  background: rgba(0, 0, 0, .67) !important;
+  border-left: 3px solid #A600FF !important;
+  box-shadow: inset 0 0 15px rgba(0,255,255,0.1);
+}
+#news-block h1,
+#news-block h2,
+#news-block h3 {
+  color: #9D57FF !important;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+#pass-block,
+#pass-progress,
+#pass-quest-wrapper {
+  background: rgba(10,15,20,0.9) !important;
+  border: 1px solid rgba(0,255,255,0.15);
+  border-radius: 5px;
+  backdrop-filter: blur(10px);
+}
+#pass-progress-bar-fill {
+  background: linear-gradient(90deg,#9d57ff,#4E10A6) !important;
+  box-shadow: 0 0 10px rgba(162, 0, 255, .5);
+}
+#pass-name-text {
+  color: #FFF !important;
+  text-shadow: 0 0 10px rgba(98, 3, 140, .4);
+}
+
+#start-top-left,
+#start-top-right {
+  color: #FFF !important;
+  font-weight: 700;
+}
+
+@keyframes bfGlow {
+  0%,100% { box-shadow: 0 0 6px rgba(144, 0, 255, .2); }
+  50% { box-shadow: 0 0 16px rgba(174, 0, 255, .5); }
+}
+.menu-block:hover {
+  animation: bfGlow 2s ease-in-out infinite;
+}
+
+#start-row-header {
+    background-image: url(https://i.imgur.com/I4uYvnX.png) !important;
+}
+/*Top right buttons*/
+.account-details-top-buttons>.account-details-link-out {
+  background-image:url(../img/gui/link.svg);
+  background-color:#9D57FF;
+  background-position:97%;
+  border-bottom:2px solid #FFF;
+  box-shadow:inset 0 -2px #1871C800; 
+}
+
+.account-details-top-buttons>.account-details-button-loadout {
+  background-color: rgba(157, 0, 255, .08) !important;
+  border: 1px solid rgb(123, 0, 255) !important;
+  color: #FFF !important;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  transition: all 0.25s ease-in-out;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0);
+}
+
+.btn-mode-woods{
+    box-shadow: inset 0 -2px #0000 !important;
+}
+
+#btn-customize{
+  box-shadow: inset 0 -2px #FFF0;
+}
+
+/*Settings Modal*/
+#modal-settings-body{
+ background-color: #000000B3 !important;
+  border: 1px solid rgb(123, 0, 255) !important;
+  color: #FFF !important;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  transition: all 0.25s ease-in-out;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0);
+}
+.modal-header{
+ background-color: #000000B3 !important;
+  border: 1px solid rgb(123, 0, 255) !important;
+  color: #FFF !important;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  transition: all 0.25s ease-in-out;
+  border-radius: 3px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0);}
+
 /* ---------- LOADOUT EDITING ----------> */
-#modal-customize-body {
-    background-color: #9d57ff;
-    color: #000;
-    height: auto;
-}
-
+#modal-customize-body,
 #modal-customize-header,
+.modal-content-right,
 #modal-customize-footer {
-    background-color: #5404c6;
-    color: #fff;
+  background-color: rgba(140, 0, 255, .52) !important;
+  border: 1px solid rgba(123, 0, 255, .56) !important;
+  color: #FFF !important;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  transition: all 0.25s ease-in-out;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0);
 }
-
 #modal-customize-header { height: 122px; }
 #modal-customize-footer { height: 56px; }
-
-.modal-content-right {
-    background: #b07ef7;
-    border: 6px solid transparent;
-    border-radius: 5px;
-    bottom: 0;
-    display: none;
-    pointer-events: initial;
-    position: fixed;
-    right: 0;
-    width: 330px;
-}
 
 /* ---------- KEYBIND EDITING ----------> */
 #ui-modal-keybind-body,
 #ui-modal-keybind-header,
 #ui-modal-keybind-footer {
-    background-color: #a300ff;
+  background-color: rgba(140, 0, 255, .52) !important;
+  border: 1px solid rgba(123, 0, 255, .56) !important;
+  color: #FFF !important;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  transition: all 0.25s ease-in-out;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0);
 }
 
 #ui-modal-keybind-body { color: #000; }
@@ -404,6 +476,36 @@
     text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
     width: 190px;
 }
+
+#team-menu.menu-column.menu-block {
+  background: rgba(10, 15, 20, 0.8) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 255, 255, 0.15) !important;
+  border-left: 3px solid #9D57FF !important;
+  border-radius: 4px !important;
+  box-shadow:
+    0 0 25px rgba(0, 255, 255, 0.08),
+    inset 0 0 10px rgba(0, 255, 255, 0.05);
+  transition: box-shadow 0.25s ease-in-out, background 0.25s ease-in-out;
+  box-sizing: border-box !important;
+  position: relative !important;
+  transform: translateZ(0);
+  margin: 0 auto;
+}
+
+#team-menu.menu-column.menu-block:hover {
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.25);
+}
+
+#team-menu-columns {
+  display: flex;
+  align-items: flex-start;
+}
+
+.team-menu-block {
+  margin-top: -3px;
+}
+
 
 /* ---------- TOP LEFT HUD ----------> */
 #ui-top-left {
@@ -741,5 +843,24 @@
     -webkit-text-fill-color: transparent;
     font-weight: bold;
 }
+/*Specify when you kill or you die with seperate colors*/
+/* You killed someone (blue) */
+#ui-killfeed .killfeed-text[style*="rgb(0, 191, 255)"],
+#ui-killfeed .killfeed-text[style*="#00bfff"] {
+  color: transparent !important;
+  background: linear-gradient(to right, #00bfff, #84eff9, #ffffff) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold !important;
+}
 
+/* You got killed (red) */
+#ui-killfeed .killfeed-text[style*="rgb(209, 119, 124)"],
+#ui-killfeed .killfeed-text[style*="#d1777c"] {
+  color: transparent !important;
+  background: linear-gradient(to right, #FF000E, #E13E3E, #EE8585) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: bold !important;
+}
 }
