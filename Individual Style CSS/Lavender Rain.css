@@ -137,6 +137,7 @@
     margin-top: 1px;
 }
 
+
 /* ---------- MENU EDITING ----------> */
 
 #server-select-main {
@@ -688,7 +689,7 @@
     background-size: cover !important;
     transform: scale(1,1);
 }
-
+#ui-loot-308sub,
 #ui-loot-12gauge,
 #ui-loot-762mm,
 #ui-loot-556mm,
@@ -700,7 +701,7 @@
     flex-direction: column;
     align-items: center;
 }
-
+#ui-loot-308sub img.ui-loot-image,
 #ui-loot-12gauge img.ui-loot-image,
 #ui-loot-762mm img.ui-loot-image,
 #ui-loot-556mm img.ui-loot-image,
@@ -708,18 +709,19 @@
 #ui-loot-50AE img.ui-loot-image,
 #ui-loot-45acp img.ui-loot-image,
 #ui-loot-flare img.ui-loot-image {
+    
     display: none !important;
 }
 
 /* Individual Loot Items with proper transform & gap on parent */
-#ui-loot-12gauge { gap: 2px; transform: translateY(-45px); }
-#ui-loot-762mm   { gap: 1px; transform: translateY(-43px); }
-#ui-loot-556mm   { gap: 2px; transform: translateY(-42px); }
+#ui-loot-12gauge { gap: 2px; transform: translateY(-22px); }
+#ui-loot-762mm   { gap: 1px; transform: translateY(-25px); }
+#ui-loot-556mm   { gap: 2px; transform: translateY(-28px); }
 #ui-loot-9mm     { gap: 2px; transform: translateY(-19px); }
 #ui-loot-50AE    { gap: 2px; transform: translateY(-20px); }
 #ui-loot-45acp   { gap: 2px; transform: translateY(-42px); }
-#ui-loot-flare   { gap: 2px; transform: translateY(-42px); }
-
+#ui-loot-flare   { gap: 2px; transform: translateY(-22px); }
+#ui-loot-308sub  { gap: 2px; transform: translateY(-20px); }
 /* Actual Loot Images */
 #ui-loot-12gauge::after { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/FSeF6Pz.png") no-repeat center/contain; margin-top: 2px; }
 #ui-loot-762mm::after   { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/YEjKFeX.png") no-repeat center/contain; margin-top: 2px; }
@@ -728,7 +730,77 @@
 #ui-loot-50AE::after    { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/NWi1Sav.png") no-repeat center/contain; margin-top: 2px; }
 #ui-loot-45acp::after   { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/gG6iLrw.png") no-repeat center/contain; margin-top: 2px; }
 #ui-loot-flare::after   { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/8PUySaO.png") no-repeat center/contain; margin-top: 2px; }
+#ui-loot-308sub::after  { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/tSIft4B.png") no-repeat center/contain; margin-top: 2px; }
+/*Start Hover States*/
+/* === Universal Loot Hover Styling === */
+[id^="ui-loot-"]:hover {
+  transition: box-shadow 0.25s ease, border 0.25s ease;
+}
 
+/* === 9mm === */
+#ui-loot-9mm:hover {
+  box-shadow: 0 0 18px rgba(255, 234, 0, 0.95);
+}
+#ui-loot-9mm.ui-outline-hover:hover {
+  border: 2px solid #ffde00;
+}
+
+/* === 12 Gauge === */
+#ui-loot-12gauge:hover {
+  box-shadow: 0 0 18px rgba(255, 0, 0, 0.95);
+}
+#ui-loot-12gauge.ui-outline-hover:hover {
+  border: 2px solid #ff0000;
+}
+
+/* === 7.62mm === */
+#ui-loot-762mm:hover {
+  box-shadow: 0 0 18px rgba(6, 0, 255, 0.95);
+}
+#ui-loot-762mm.ui-outline-hover:hover {
+  border: 2px solid #0004ff;
+}
+
+/* === .50 AE === */
+#ui-loot-50AE:hover {
+  box-shadow: 0 0 18px rgba(10, 15, 20, 0.9);
+}
+#ui-loot-50AE.ui-outline-hover:hover {
+  border: 2px solid rgba(10, 15, 20, 0.9);
+}
+
+/* === 5.56mm === */
+#ui-loot-556mm:hover {
+  box-shadow: 0 0 18px rgba(33, 132, 10, 0.95);
+}
+#ui-loot-556mm.ui-outline-hover:hover {
+  border: 2px solid #0d9106;
+}
+
+/* === .45 ACP === */
+#ui-loot-45acp:hover {
+  box-shadow: 0 0 18px rgba(123, 0, 255, 0.95);
+}
+#ui-loot-45acp.ui-outline-hover:hover {
+  border: 2px solid rgb(123, 0, 255);
+}
+
+/* === Flare === */
+#ui-loot-flare:hover {
+  box-shadow: 0 0 18px rgba(255, 155, 0, 0.95);
+}
+#ui-loot-flare.ui-outline-hover:hover {
+  border: 2px solid rgb(255, 155, 0);
+}
+
+/* === .308 Sub === */
+#ui-loot-308sub:hover {
+  box-shadow: 0 0 18px #313800;
+}
+#ui-loot-308sub.ui-outline-hover:hover {
+  border: 2px solid #313800;
+}
+    
 /* ---------- DEATH SCREEN ----------> */
 .ui-stats-info-player {             
     position: relative;
@@ -791,22 +863,31 @@
 
 /* ---------- HEALTH EDITING ----------> */
 #ui-health-actual.ui-bar-inner {
-  background: rgba(227, 0, 255, .8);
-  animation-name: pulsewhite;
-  animation-duration: 100s;
-  animation-timing-function: ease-out;
-  animation-delay: 0s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-  animation-fill-mode: none;
-  animation-play-state: running;
+    background: linear-gradient(270deg,
+    rgb(123, 0, 255),
+    #C500FF,
+    #6700FF,
+    #DEB2FB,
+    #B666F9,
+    #7300FF,
+    #6C00FF);
+    background-size: 400% 400%;
+    animation: healthGradient 20s ease infinite;
+    border-radius: 4px;
 }
 
-.health-bar-pulse { animation: pulsewhite 1s linear infinite; }
-
-@keyframes pulsewhite {
-  0%, 50%, 100% { background-color: #b07ef7; }
+@keyframes healthGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
+
 
 /* ---------- ALIVE COUNTER ----------> */
 #ui-leaderboard-wrapper {
