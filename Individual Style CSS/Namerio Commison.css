@@ -430,17 +430,33 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* ---------- LOADOUT EDITING ----------> */
+/* ---------- LOADOUT EDITING ---------- */
 #modal-customize-body {
-    background-color: #41BAB1;
-    color: #000;
-    height: auto;
+  background: rgba(10, 15, 20, 0.82) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  border-left: 3px solid rgba(2, 4, 5, .9);
+  border-radius: 6px;
+  padding: 20px 0px;
+  height: auto;
+  width: 100%;
 }
 
 #modal-customize-header,
 #modal-customize-footer {
-    background-color: #80d8fe;
-    color: #fff;
+  background: rgba(10, 15, 20, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 255, 255, 0.1);
+  color: #00f7ff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  border-left: 3px solid rgba(2, 4, 5, .9);
+}
+    
+.modal-customize-cat-selected {
+  background: rgb(0, 0, 0) !important;
 }
 
 #modal-customize-header { height: 122px; }
@@ -853,17 +869,18 @@
 #ui-loot-flare::after   { content: ""; display: block; width: 32px; height: 32px; background: url("https://i.imgur.com/8PUySaO.png") no-repeat center/contain; margin-top: 2px; }
 
 /* ---------- DEATH SCREEN ----------> */
-/*
+
 .ui-stats-info-player {             
     position: relative;
     width: 255px;
+    color: #41BAB1;
     top: 10px;
     background-color: rgba(0, 0, 0, 0.75);
     border-radius: 4px;
     border: 2px solid black;
     transform: translateX(-50%);
 }
-*/
+
 .ui-stats-info-player-name {
     color: #41BAB1;
     font-size: 25px;
@@ -916,23 +933,25 @@
 
 /* ---------- HEALTH EDITING ----------> */
 #ui-health-actual.ui-bar-inner {
-  background: rgba(0, 236, 255, .8);
-  animation-name: pulsewhite;
-  animation-duration: 100s;
-  animation-timing-function: ease-out;
-  animation-delay: 0s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-  animation-fill-mode: none;
-  animation-play-state: running;
+  background: linear-gradient(270deg,
+    #00eaff,
+    #00ffcc,
+    #33ff66,
+    #ffee00,
+    #ff8800,
+    #ff3366,
+    #00eaff
+  );
+  background-size: 400% 400%;
+  animation: healthGradient 20s ease infinite;
+  border-radius: 4px;
 }
 
-.health-bar-pulse { animation: pulsewhite 1s linear infinite; }
-
-@keyframes pulsewhite {
-  0%, 50%, 100% { background-color: #10d7ea; }
+@keyframes healthGradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
-
 /* ---------- ALIVE COUNTER ----------> */
 #ui-leaderboard-wrapper {
   position: absolute;
