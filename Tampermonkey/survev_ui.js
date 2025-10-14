@@ -447,11 +447,60 @@
     });
 
     document.body.appendChild(box);
+    // === Make the customizer box draggable ===
+const header = box.querySelector('.custom-header');
+if (header) {
+    let isDragging = false;
+    let startX = 0, startY = 0;
+    let startLeft = 0, startTop = 0;
+
+    // Ensure box is positioned for dragging
+    box.style.position = 'fixed';
+    if (!box.style.left) box.style.left = box.offsetLeft + 'px';
+    if (!box.style.top) box.style.top = box.offsetTop + 'px';
+    box.style.right = 'auto';
+    box.style.bottom = 'auto';
+
+    header.style.cursor = 'move';
+
+    header.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        startLeft = parseInt(box.style.left, 10);
+        startTop = parseInt(box.style.top, 10);
+        document.body.style.userSelect = 'none';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        box.style.left = `${startLeft + dx}px`;
+        box.style.top = `${startTop + dy}px`;
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+            document.body.style.userSelect = '';
+        }
+    });
+}
+
     window._survevGradientDefaults = defaults;
     window._survevBox = box;
     window._survevStyleEl = style;
     window._survevDefaultBG = defaultBG;
     window._survevDefaultAvatar = defaultAvatar;
+// === Toggle box visibility with SHIFT ===
+let boxVisible = true;
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Shift') {
+        boxVisible = !boxVisible;
+        box.style.display = boxVisible ? 'block' : 'none';
+    }
+});
 
 })();
 
@@ -817,4 +866,71 @@
         subtree: true
     });
 
+})();
+
+// ---------------------------
+// Added: Ensure box is moveable (only this addition)
+// (If the box exists and header is present, add a small protective draggable initializer
+//  that won't modify other code or styles.)
+// ---------------------------
+(function ensureBoxDraggable() {
+    try {
+        const tryAttach = () => {
+            const box = window._survevBox || document.getElementById('customBox');
+            if (!box) return false;
+            const header = box.querySelector('.custom-header');
+            if (!header) return false;
+            // Avoid attaching twice
+            if (header.dataset._draggable === '1') return true;
+
+            let isDragging = false;
+            let offsetX = 0;
+            let offsetY = 0;
+
+            header.style.cursor = header.style.cursor || 'move';
+
+            const onMouseDown = (e) => {
+                isDragging = true;
+                // If box is not positioned, ensure it is
+                const rect = box.getBoundingClientRect();
+                if (!box.style.left) box.style.left = rect.left + 'px';
+                if (!box.style.top) box.style.top = rect.top + 'px';
+                offsetX = e.clientX - box.offsetLeft;
+                offsetY = e.clientY - box.offsetTop;
+                document.body.style.userSelect = 'none';
+            };
+
+            const onMouseMove = (e) => {
+                if (!isDragging) return;
+                box.style.left = (e.clientX - offsetX) + 'px';
+                box.style.top = (e.clientY - offsetY) + 'px';
+            };
+
+            const onMouseUp = () => {
+                if (!isDragging) return;
+                isDragging = false;
+                document.body.style.userSelect = '';
+            };
+
+            header.addEventListener('mousedown', onMouseDown);
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+
+            header.dataset._draggable = '1';
+            return true;
+        };
+
+        // Try immediately and a few times in case the box is added later
+        if (!tryAttach()) {
+            let attempts = 0;
+            const maxAttempts = 20;
+            const iv = setInterval(() => {
+                attempts++;
+                if (tryAttach() || attempts >= maxAttempts) clearInterval(iv);
+            }, 300);
+        }
+    } catch (e) {
+        // silent fail to avoid interfering with original script
+        console.error('Draggable initializer error', e);
+    }
 })();
