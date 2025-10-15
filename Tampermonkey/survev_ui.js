@@ -7,9 +7,13 @@
 // @run-at       document-end
 // ==/UserScript==
 
+//NOTES
+//The gradients are pulled by default, and others are added by user's, there are none set to pull from individually
+
+
 (async function() {
     'use strict';
-    const cssUrl = 'https://raw.githubusercontent.com/NAMERIO/Survev.io-CSS-Script/main/Individual%20Style%20CSS/Namerio%20Commison.css';
+    const cssUrl = 'Custom Github Raw File';
     try {
         const response = await fetch(cssUrl);
         if (!response.ok) throw new Error(`Failed to load CSS: ${response.status}`);
@@ -183,7 +187,7 @@
         }
     }, 1000);
 })();
-
+/* <---------- Default Gradients ----------> */
 (function() {
     'use strict';
     const defaultBG = 'https://m.media-amazon.com/images/I/81yrz+uGqpL.jpg';
@@ -242,7 +246,7 @@
             ],
         },
     };
-
+/* <---------- Entire box ----------> */
     const style = document.createElement('style');
     style.textContent = `
         #customBox {
@@ -604,12 +608,12 @@ document.addEventListener('keydown', (e) => {
             stops
         };
     }
-
+/* <---------- Lets user change graident to their choice ----------> */
     function gradientToCSS(obj) {
         const parts = obj.stops.map(s => `${s.color} ${s.pos}%`);
         return `linear-gradient(${obj.direction}, ${parts.join(', ')})`;
     }
-
+/* <---------- Preview Bar ----------> */
     function updatePreview(gKey) {
         const data = collectGradientData(gKey);
         const css = gradientToCSS(data);
@@ -647,7 +651,6 @@ document.addEventListener('keydown', (e) => {
       #ui-killfeed-2 .killfeed-text,
       #ui-killfeed-3 .killfeed-text,
       #ui-killfeed-4 .killfeed-text,
-      #ui-killfeed-5 .killfeed-text {
         background: ${css3} !important;
         color: transparent !important;
         -webkit-background-clip: text !important;
