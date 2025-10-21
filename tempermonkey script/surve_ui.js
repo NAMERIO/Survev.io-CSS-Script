@@ -882,11 +882,11 @@
 
                 <div id="tab-settings" class="tabSection" style="display:none;">
                     <div class="input-group">
-                        <label>Keyboard Shortcut</label>
+                        <label>Open/Close Keyboard Shortcut (click apply to save after changing)</label>
                         <button id="setShortcutBtn">Set Key</button>
                     </div>
                     <div class="input-group">
-                        <label>Current Shortcut</label>
+                        <label>Open/Close Current Shortcut</label>
                         <div class="shortcut-display">
                             <span id="currentShortcut">Shift + H</span>
                         </div>
@@ -1068,17 +1068,24 @@
             });
 
             const setShortcutBtn = this.box.querySelector('#setShortcutBtn');
+            const currentShortcut = this.box.querySelector('#currentShortcut');
             const savedShortcut = localStorage.getItem('customShortcut') || CONFIG.toggleKey;
             this.updateShortcutDisplay(savedShortcut);
 
             setShortcutBtn.addEventListener('click', () => {
-                alert('Press any key to set as your toggle key...');
+                setShortcutBtn.textContent = 'Press any key...';
+                setShortcutBtn.disabled = true;
+                setShortcutBtn.style.opacity = '0.7';
+
                 const handleKey = (e) => {
                     e.preventDefault();
                     const newKey = e.key.toLowerCase();
-                    localStorage.setItem('customShortcut', newKey);
                     this.updateShortcutDisplay(newKey);
-                    alert(`Shortcut set to "${newKey.toUpperCase()}"`);
+                    setShortcutBtn.textContent = `Selected: ${newKey.toUpperCase()}`;
+                    setShortcutBtn.disabled = false;
+                    setShortcutBtn.style.opacity = '1';
+                    localStorage.setItem('pendingShortcut', newKey);
+
                     document.removeEventListener('keydown', handleKey);
                 };
                 document.addEventListener('keydown', handleKey);
@@ -1446,9 +1453,14 @@
         },
 
         applySettings() {
+            const pendingShortcut = localStorage.getItem('pendingShortcut');
+            if (pendingShortcut) {
+                localStorage.setItem('customShortcut', pendingShortcut);
+                localStorage.removeItem('pendingShortcut');
+                Utils.log(`[Shortcut set to "${pendingShortcut.toUpperCase()}"]`, '#00ff00');
+            }
             const savedShortcut = localStorage.getItem('customShortcut') || CONFIG.toggleKey;
             this.updateShortcutDisplay(savedShortcut);
-            Utils.log(`[Shortcut reapplied: ${savedShortcut}]`);
         },
 
         resetSettings() {
