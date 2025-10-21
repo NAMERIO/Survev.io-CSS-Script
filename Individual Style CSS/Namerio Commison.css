@@ -97,7 +97,6 @@
 .btn-darken:hover {
   background-color: rgba(0,255,255,0.2) !important;
   box-shadow: 0 0 15px rgba(0,255,255,0.4);
-  transform: scale(1.03);
 }
 
 #btns-quick-start {
