@@ -368,6 +368,71 @@
                 }
             `;
             document.head.appendChild(style);
+        },
+        applyMixed() {
+            const style = document.getElementById('killfeedStyle') || document.createElement('style');
+            style.id = 'killfeedStyle';
+            style.textContent = `
+                #ui-killfeed .killfeed-text[style*="rgb(0, 191, 255)"],
+                #ui-killfeed .killfeed-text[style*="#00bfff"] {
+                    background: linear-gradient(to right, #025a5d, #00bfff, #84eff9, #ffffff) !important;
+                    color: transparent !important;
+                    -webkit-background-clip: text !important;
+                    -webkit-text-fill-color: transparent !important;
+                    font-weight: bold !important;
+                }
+                #ui-killfeed .killfeed-text[style*="rgb(209, 119, 124)"],
+                #ui-killfeed .killfeed-text[style*="#d1777c"] {
+                    background: linear-gradient(to right, #6a0321, #db064d, #f984a5, #ffc1d3) !important;
+                    color: transparent !important;
+                    -webkit-background-clip: text !important;
+                    -webkit-text-fill-color: transparent !important;
+                    font-weight: bold !important;
+                }
+                #ui-killfeed-0 .killfeed-text {
+                    background: linear-gradient(to right, #6a4303, #db8c06, #f9c784, #ffe6c1) !important;
+                    color: transparent !important;
+                    -webkit-background-clip: text !important;
+                    -webkit-text-fill-color: transparent !important;
+                    font-weight: bold !important;
+                }
+                #ui-killfeed-1 .killfeed-text {
+                    background: linear-gradient(to right, #1d036a, #4206db, #8b84f9, #d7c1ff) !important;
+                    color: transparent !important;
+                    -webkit-background-clip: text !important;
+                    -webkit-text-fill-color: transparent !important;
+                    font-weight: bold !important;
+                }
+                #ui-killfeed-2 .killfeed-text {
+                    background: linear-gradient(to right, #036a2b, #06db3a, #84f9a0, #c1ffd1) !important;
+                    color: transparent !important;
+                    -webkit-background-clip: text !important;
+                    -webkit-text-fill-color: transparent !important;
+                    font-weight: bold !important;
+                }
+                #ui-killfeed-3 .killfeed-text {
+                    background: linear-gradient(to right, #6a0321, #d1777c, #ff8a8a, #ffffff) !important;
+                    color: transparent !important;
+                    -webkit-background-clip: text !important;
+                    -webkit-text-fill-color: transparent !important;
+                    font-weight: bold !important;
+                }
+                #ui-killfeed-4 .killfeed-text {
+                    background: linear-gradient(to right, #6e0161, #c206db, #f984f3, #ffc1f7) !important;
+                    color: transparent !important;
+                    -webkit-background-clip: text !important;
+                    -webkit-text-fill-color: transparent !important;
+                    font-weight: bold !important;
+                }
+                #ui-killfeed-5 .killfeed-text {
+                    background: linear-gradient(to right, #6a6803, #d0db06, #f7f984, #fffec1) !important;
+                    color: transparent !important;
+                    -webkit-background-clip: text !important;
+                    -webkit-text-fill-color: transparent !important;
+                    font-weight: bold !important;
+                }
+            `;
+            document.head.appendChild(style);
         }
     };
 
@@ -949,6 +1014,29 @@
                     padding: 6px;
                     background: rgba(0,0,0,0.2);
                 }
+                .mixed-toggle-btn {
+                    display: block;
+                    width: 100%;
+                    padding: 10px 14px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    letter-spacing: 0.5px;
+                    color: #00f7ff;
+                    background: rgba(0,247,255,0.08);
+                    border: 1px solid rgba(0,247,255,0.3);
+                    border-radius: 8px;
+                    transition: all 0.25s ease;
+                    margin-bottom: 12px;
+                }
+                .mixed-toggle-btn:hover {
+                    background: rgba(0,247,255,0.15);
+                    transform: translateY(-1px);
+                }
+                .mixed-toggle-btn:active {
+                    background: rgba(0,247,255,0.25);
+                    transform: translateY(0);
+                }
             `;
             Utils.createStyle(css);
         },
@@ -1367,6 +1455,29 @@
                 container.appendChild(block);
                 this.updatePreview(type.key);
             });
+            const mixedEnabled = localStorage.getItem('mixedGradientEnabled') === 'true';
+            const mixedBtn = document.createElement('button');
+            mixedBtn.id = 'mixedGradientBtn';
+            mixedBtn.textContent = mixedEnabled ? 'Mixed Gradient: ON' : 'Mixed Gradient: OFF';
+            mixedBtn.className = 'mixed-toggle-btn';
+            mixedBtn.style.marginBottom = '10px';
+            if (mixedEnabled) {
+                mixedBtn.style.background = 'rgba(0,255,150,0.15)';
+                mixedBtn.style.borderColor = 'rgba(0,255,150,0.5)';
+            }
+            mixedBtn.addEventListener('click', () => {
+                const enabled = localStorage.getItem('mixedGradientEnabled') === 'true';
+                const newState = !enabled;
+                localStorage.setItem('mixedGradientEnabled', newState);
+                mixedBtn.textContent = newState ? 'Mixed Gradient: ON' : 'Mixed Gradient: OFF';
+                mixedBtn.style.background = newState ? 'rgba(0,255,150,0.15)' : 'rgba(0,247,255,0.08)';
+                mixedBtn.style.borderColor = newState ? 'rgba(0,255,150,0.5)' : 'rgba(0,247,255,0.3)';
+
+                if (newState) GradientManager.applyMixed();
+                else GradientManager.apply();
+            });
+            container.prepend(mixedBtn);
+
         },
 
         createGradientBlock(type, data) {
@@ -1742,13 +1853,18 @@
         CSSLoader.loadOverrides();
         StatsDisplay.load();
         ImageManager.init();
-        GradientManager.apply();
         HealthBarManager.apply(HealthBarManager.load());
         window.addEventListener('load', () => {
             setTimeout(() => {
                 UIManager.createStyles();
                 UIManager.createBox();
-            }, 200);
+                const mixedEnabled = localStorage.getItem('mixedGradientEnabled') === 'true';
+                if (mixedEnabled) {
+                    GradientManager.applyMixed();
+                } else {
+                    GradientManager.apply();
+                }
+            }, 500);
         });
     }
 
